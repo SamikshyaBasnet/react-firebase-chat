@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Lama Chat</span>
+        <span className="logo">Eney Meeny Chat</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
@@ -32,7 +32,7 @@ const Login = () => {
           {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You don't have an account? <Link href="/register">Register</Link>
+          You don&apos;t have an account? <Link href="/register">Register</Link>
         </p>
       </div>
     </div>

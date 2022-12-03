@@ -18,7 +18,6 @@ const ChatContextProvider: React.FC<Props> = ({ children }) => {
     user: {},
   }
   const { currentUser } = useContext(AuthContext)
-  console.log('🚀 ~ file: ChatContext.tsx:13 ~ currentUser', currentUser)
 
   const chatReducer = (state: any, action: any) => {
     switch (action.type) {

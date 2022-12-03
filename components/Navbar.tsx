@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useContext } from 'react'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase/firebase'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { AuthContext } from '../context/AuthenticationContext'
 
 const Navbar = () => {

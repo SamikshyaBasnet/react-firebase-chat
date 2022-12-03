@@ -15,7 +15,6 @@ const Chats = () => {
       const unsub = onSnapshot(
         doc(db, 'userChats', currentUser?.uid),
         (doc) => {
-          console.log('cir da', doc.data())
           setChats(doc.data())
         },
       )

@@ -14,7 +14,7 @@ interface ContextProps {
   currentUser: CurrentUserProps
 }
 export interface Props {
-  children: React.ReactNode
+  children: React.ReactNode | any
 }
 export const AuthContext = createContext({
   currentUser: {} as CurrentUserProps | undefined | any,
@@ -26,7 +26,6 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user: any) => {
       setCurrentUser(user)
-      console.log(currentUser)
     })
     return () => {
       unsub()

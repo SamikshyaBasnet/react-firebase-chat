@@ -21,35 +21,23 @@ const Input = () => {
   const { currentUser } = useContext(AuthContext)
   const [error, setError] = useState(false)
   const { data } = useContext(ChatContext)
-  console.log('🚀 ~ file: Input.tsx:17 ~ Input ~ data', data.chatId)
 
   const handleSend = async () => {
     if (image) {
       const storageRef = ref(storage, uuid())
-      const uploadTask = uploadBytesResumable(storageRef, image)
-      console.log(
-        '🚀 ~ file: Input.tsx:22 ~ handleSend ~ uploadTask',
-        uploadTask,
-      )
-      console.log('file')
-      uploadTask.on(
-        (error: any) => {
-          console.log('error', error)
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateDoc(doc(db, 'chats', data.chatId), {
-              messages: arrayUnion({
-                id: Math.random() * 1000,
-                text,
-                senderId: currentUser.uid,
-                date: Timestamp.now(),
-                image: downloadURL,
-              }),
-            })
+      uploadBytesResumable(storageRef, image).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          await updateDoc(doc(db, 'chats', data.chatId), {
+            messages: arrayUnion({
+              id: Math.random() * 1000,
+              text,
+              senderId: currentUser.uid,
+              date: Timestamp.now(),
+              image: downloadURL,
+            }),
           })
-        },
-      )
+        })
+      })
     } else {
       await updateDoc(doc(db, 'chats', data.chatId), {
         messages: arrayUnion({

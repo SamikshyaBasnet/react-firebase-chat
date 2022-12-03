@@ -9,6 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase/firebase'
 import { useRouter } from 'next/router'
+
 const Register: NextPage = () => {
   interface Error {
     code: number
@@ -30,13 +31,11 @@ const Register: NextPage = () => {
     e.preventDefault()
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
-      console.log('res', res)
       // Upload file and metadata to the object 'images/mountains.jpg'
       const date = new Date().getTime()
       const storageRef = ref(storage, `${username + date}`)
       // Listen for state changes, errors, and completion of the upload.
       uploadBytesResumable(storageRef, file).then(() => {
-        console.log('inside')
         getDownloadURL(storageRef).then(async (downloadURL) => {
           await updateProfile(res.user, {
             displayName: username,
@@ -54,7 +53,6 @@ const Register: NextPage = () => {
       })
     } catch (error) {
       //setError(error)
-      console.log('Error', error)
     }
   }
 

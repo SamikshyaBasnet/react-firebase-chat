@@ -11,7 +11,6 @@ import Messages from './Messages'
 
 const Chat = () => {
   const { data } = useContext(ChatContext)
-  console.log('🚀 ~ file: Chat.tsx:14 ~ Chat ~ data', data)
 
   return (
     <div className="chat">

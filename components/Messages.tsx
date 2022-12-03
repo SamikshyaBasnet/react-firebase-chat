@@ -19,11 +19,10 @@ const Messages = () => {
       unSub()
     }
   }, [data.chatId])
-  console.log('messages', messages)
   return (
     <div className="messages">
       {messages.map((message: any, index) => (
-        <Message message={message} />
+        <Message message={message} key={index} />
       ))}
     </div>
   )

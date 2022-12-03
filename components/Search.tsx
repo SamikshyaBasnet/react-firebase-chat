@@ -37,7 +37,6 @@ const Search = () => {
         setUser(user.data())
       })
     } catch (err) {
-      console.log('errr', err)
       setErr(true)
     }
   }
@@ -56,7 +55,6 @@ const Search = () => {
 
     try {
       const res = await getDoc(doc(db, 'chats', combinedId))
-      console.log('🚀 ~ file: Search.tsx:58 ~ handleSelectUser ~ res', res)
 
       if (!res.exists()) {
         //create a chat collection
