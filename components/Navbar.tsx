@@ -13,12 +13,12 @@ const Navbar = () => {
       <span className="logo">Eney Meeny Chat</span>
       <div className="user">
         <Image
-          src={currentUser.photoURL}
+          src={currentUser?.photoURL}
           alt="profile-imge"
           height={100}
           width={100}
         />
-        <span>{currentUser.displayName}</span>
+        <span>{currentUser?.displayName}</span>
         <button
           style={{ height: '1.7rem' }}
           onClick={() => {

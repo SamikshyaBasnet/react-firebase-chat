@@ -15,6 +15,36 @@
     @content;
   }
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey;
+  border-radius: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #355ca0;
+  border-radius: 12px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #355ca0;
+}
+.label,
+.icon {
+  cursor: pointer;
+}
+.image-text {
+  border-radius: 0.4rem;
+  height: 8rem;
+  width: 5rem;
+}
 input {
   background: transparent;
   color: #111;
@@ -62,7 +92,7 @@ input {
       }
 
       button {
-        background-color: #7b96ec;
+        background-color: #2955e7;
         color: white;
         padding: 10px;
         font-weight: bold;
@@ -319,7 +349,8 @@ input {
             border: none;
             padding: 10px 15px;
             color: white;
-            background-color: #8da4f1;
+            background-color: #2955e7;
+
             cursor: pointer;
           }
         }

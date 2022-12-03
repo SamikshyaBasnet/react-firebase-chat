@@ -22,7 +22,7 @@ const Register: NextPage = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [file, setFile] = useState<Blob | Uint8Array | ArrayBuffer | File>()
+  const [file, setFile] = useState<any>()
   const [error, setError] = useState<Error>()
 
   const router = useRouter()
@@ -34,9 +34,8 @@ const Register: NextPage = () => {
       // Upload file and metadata to the object 'images/mountains.jpg'
       const date = new Date().getTime()
       const storageRef = ref(storage, `${username + date}`)
-      const upf = file ? file : null
       // Listen for state changes, errors, and completion of the upload.
-      uploadBytesResumable(storageRef, upf).then(() => {
+      uploadBytesResumable(storageRef, file).then(() => {
         console.log('inside')
         getDownloadURL(storageRef).then(async (downloadURL) => {
           await updateProfile(res.user, {

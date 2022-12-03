@@ -4,15 +4,19 @@ import {
   faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useContext } from 'react'
+import { ChatContext } from '../context/ChatContext'
 import Input from './Input'
 import Messages from './Messages'
 
 const Chat = () => {
+  const { data } = useContext(ChatContext)
+  console.log('🚀 ~ file: Chat.tsx:14 ~ Chat ~ data', data)
+
   return (
     <div className="chat">
       <div className="chatInfo">
-        <span>Mina</span>
+        <span>{data.user?.displayName}</span>
         <div className="chatIcons">
           <FontAwesomeIcon icon={faCamera} className="icon" />
           <FontAwesomeIcon icon={faUserPlus} className="icon" />

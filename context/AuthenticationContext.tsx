@@ -10,11 +10,14 @@ export interface CurrentUserProps {
   providerID: string
   uid: string
 }
+interface ContextProps {
+  currentUser: CurrentUserProps
+}
 export interface Props {
   children: React.ReactNode
 }
 export const AuthContext = createContext({
-  currentUser: {} as CurrentUserProps,
+  currentUser: {} as CurrentUserProps | undefined | any,
 })
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {

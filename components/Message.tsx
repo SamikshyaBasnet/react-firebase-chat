@@ -1,31 +1,60 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
+import { AuthContext } from '../context/AuthenticationContext'
+import { ChatContext } from '../context/ChatContext'
+import { timeago } from '../utils/timeago'
 
-const Message = () => {
+export interface MessageProps {
+  message: {
+    senderId: string
+    text: string
+    data: string
+    date: any
+    image?: string
+  }
+}
+
+const Message = ({ message }: MessageProps) => {
+  const { currentUser } = useContext(AuthContext)
+  const { data } = useContext(ChatContext)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    ref?.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
   return (
-    <div className="message owner">
+    <div
+      ref={ref}
+      className={`message ${
+        message.senderId === currentUser?.uid ? 'owner' : ''
+      }`}
+    >
       <div className="messageInfo">
         <Image
           src={
-            'https://images.unsplash.com/photo-1615022702095-ff2c036f3360?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZ2lybHxlbnwwfHwwfHw%3D&w=1000&q=80'
+            message.senderId === currentUser?.uid
+              ? currentUser.photoURL
+              : data?.user?.photoURL
           }
           alt="profile-imge"
           height={80}
           width={80}
         />
-        <span>Just now</span>
-        <div className="messageContent">
-          <p>Hello</p>{' '}
+        <span>{timeago(message.date.toDate())}</span>
+      </div>
+      <div className="messageContent">
+        <p>{message.text}</p>{' '}
+        {message.image && (
           <Image
-            src={
-              'https://images.unsplash.com/photo-1615022702095-ff2c036f3360?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZ2lybHxlbnwwfHwwfHw%3D&w=1000&q=80'
-            }
+            src={message.image}
             alt="profile-imge"
-            height={280}
-            width={180}
-            className="img"
+            height={100}
+            width={300}
+            objectFit="cover"
+            className="image-text"
           />
-        </div>
+        )}
       </div>
     </div>
   )
