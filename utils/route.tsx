@@ -8,7 +8,7 @@ export const ProtectedRoute = ({ children }: Props) => {
   const router = useRouter()
 
   if (!currentUser) {
-    router.push('/login')
+    router.push({ pathname: '/login' })
   } else {
     return children
   }

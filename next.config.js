@@ -5,6 +5,7 @@ const nextConfig = {
 }
 
 module.exports = {
+  assetPrefix: './',
   exportPathMap: async function (
     defaultPathMap, {
       dev,
@@ -34,6 +35,8 @@ module.exports = {
       "images.unsplash.com",
       "firebasestorage.googleapis.com"
     ],
+    loader: 'akamai',
+    path: '',
   },
   nextConfig
 }

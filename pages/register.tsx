@@ -109,7 +109,10 @@ const Register: NextPage = () => {
           </>
         </form>
         <p>
-          You do have an account? <Link href="/login">Login</Link>
+          You do have an account?{' '}
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
         </p>
       </div>
     </div>

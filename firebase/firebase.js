@@ -19,7 +19,7 @@ import {
 
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    apiKey: "AIzaSyA9y64Xvs5jLH6Etm-lEc5KJ7RR8eRS5E0",
     authDomain: "chat-1bc25.firebaseapp.com",
     projectId: "chat-1bc25",
     storageBucket: "chat-1bc25.appspot.com",
